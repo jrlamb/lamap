@@ -1,6 +1,6 @@
 package calc;
 
-public class Haversine implements DistanceMeasure {
+public class Haversine {
 
 	/**
 	 * This is the implementation Haversine Distance Algorithm between two places
@@ -13,29 +13,17 @@ public class Haversine implements DistanceMeasure {
 	    d = R.c
 	 *
 	 */
-
-	@Override
-	public double measure(double latitude1, double latitude2, double longitude1, double longitude2) {
-		final int R = 6371; // Radious of the earth
-		Double lat1 = latitude1;
-		Double lon1 = latitude2;
-		Double lat2 = longitude1;
-		Double lon2 = longitude2;
-		Double latDistance = toRad(lat2-lat1);
-		Double lonDistance = toRad(lon2-lon1);
-		Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + 
-				Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
-				Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-		Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		Double distance = R * c;
-
-		//System.out.println("The distance between two lat and long is::" + distance);
-		return distance;
-	}
-
-	private static Double toRad(Double value) {
-		return value * Math.PI / 180;
-	}
-
-
+	
+    public static final double R = 6372.8; // In kilometers
+    
+    public static double haversine(double lat1, double lon1, double lat2, double lon2) {
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        lat1 = Math.toRadians(lat1);
+        lat2 = Math.toRadians(lat2);
+ 
+        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(lat1) * Math.cos(lat2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return R * c;
+    }
 }

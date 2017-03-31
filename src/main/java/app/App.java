@@ -1,22 +1,17 @@
 package app;
 
-import java.io.IOException;
-
 import file.FileReader;
-import file.TextFile;
-import model.Coordinate;
 
 public class App {
-	public static void main(String[] args) {		
-		FileReader imageFile = new FileReader();
-		imageFile.read("C:\\Users\\JulianoRodrigo\\Dropbox\\TrabalhosMineracao\\Imagens\\HidroTeste.xyz");
-		//imageFile.printContent();
-		System.out.println("Records: " + imageFile.size() + " rows");
+	public static void main(String[] args) {
+		String file = "C:\\Users\\JulianoRodrigo\\Dropbox\\TrabalhosMineracao\\Imagens\\temp.xyz";
+		FileReader imageFile = new FileReader(file);
 		
-		
-		//FileReader riverFile = new FileReader();
-		//riverFile.read("C:\\Users\\JulianoRodrigo\\Dropbox\\TrabalhosMineracao\\Imagens\\HidrografiaMedianeiraXYZ");
-		//riverFile.printContent();
-		
+		imageFile.read();
+		imageFile.fillListCoordinatesRiver();
+		imageFile.printLists();
+		imageFile.compare();
+		imageFile.printLists();
+				
 	}
 }

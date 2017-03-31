@@ -3,12 +3,27 @@ package model;
 public class Coordinate {
 	private String latitude;
 	private String longitude;
+	private String distance;
 	private int value;
 	
 	public Coordinate() {
 		// TODO Auto-generated constructor stub
 	}	
 	
+	
+	
+	public String getDistance() {
+		return distance;
+	}
+
+
+
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+
+
+
 	public Coordinate(String latitude, String longitude, int value) {
 		super();
 		this.latitude = latitude;
@@ -37,9 +52,9 @@ public class Coordinate {
 
 	@Override
 	public String toString() {
-		return "Coordinate [latitude=" + latitude + ", longitude=" + longitude + ", value=" + value + "]";
+		return "Coordinate [latitude=" + latitude + ", longitude=" + longitude + ", distance=" + distance + ", value="
+				+ value + "]";
 	}
-	
 	
 	
 }
