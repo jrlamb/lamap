@@ -122,7 +122,7 @@ public class FileReader {
 
 	public void fillListCoordinatesRiver(){
 		for (Coordinate coordinate : listCoordinatesImage) {
-			if (coordinate.getValue() != 0){
+			if (coordinate.getValue() > 2){
 				listCoordinatesRiver.add(coordinate);
 			}
 		}
@@ -130,6 +130,7 @@ public class FileReader {
 
 	public void compare(){
 		System.out.println("Comparing ....");
+		int cont = 0;
 		
 		double distance = 99999999, minorDistance = 99999999;
 		double lat1, lat2, lon1, lon2;		
@@ -149,8 +150,15 @@ public class FileReader {
 			}
 			coordinateImage.setDistance(Double.toString(minorDistance));	
 			minorDistance = 99999999;
+			System.out.println("Contador: " + ++cont);
 		}	
 		System.out.println("Finished ....");
+	}
+	
+	public void grava(){
+		TextFile file = new TextFile();
+		file.gravaTxt("algumNome", listCoordinatesImage);
+		
 	}
 
 	

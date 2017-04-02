@@ -2,10 +2,14 @@ package file;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
+
+import model.Coordinate;
 
 public class TextFile {
 
@@ -97,6 +101,24 @@ public class TextFile {
 		sFilePath.flush();  // Valida o fluxo
 		sFilePath.close();
 
+	}
+
+	public void gravaTxt(String s, List<Coordinate> l){
+		File file = new File("C:\\temp\\Lista.txt");
+		String nome = ""; // só um exemplo, crie todoas as variaveis que são atributos dos objetos do array list
+		String conteudo;
+		try	{
+			FileWriter f = new FileWriter (file, true);
+			for(int i = 0; i < l.size(); i++){
+				nome = l.get(i).getLatitude() + " " + l.get(i).getLongitude() + " " + l.get(i).getDistance(); // chama o atributo do objeto na posição i
+				conteudo = nome;
+				conteudo += "\r\n";
+				f.write(conteudo);
+			}
+			f.close();
+		}catch (IOException e)  {
+			e.printStackTrace();
+		}
 	}
 
 }
