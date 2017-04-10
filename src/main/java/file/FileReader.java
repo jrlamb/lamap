@@ -12,14 +12,14 @@ public class FileReader {
 
 	private String path;
 	private List<Coordinate> listCoordinatesImage;
-	private List<Coordinate> listCoordinatesRiver;
+	private List<Coordinate> listCoordinatesSubject;
 	private List listMinorDistance;	
 
 	public FileReader(String path) {
 		this.path = path;
 		
 		listCoordinatesImage = new ArrayList<Coordinate>();
-		listCoordinatesRiver = new ArrayList<Coordinate>();
+		listCoordinatesSubject = new ArrayList<Coordinate>();
 		listMinorDistance = new ArrayList<>();		
 	}	
 
@@ -39,12 +39,12 @@ public class FileReader {
 		this.listCoordinatesImage = listCoordinatesImage;
 	}
 
-	public List<Coordinate> getListCoordinatesRiver() {
-		return listCoordinatesRiver;
+	public List<Coordinate> getListCoordinatesSubject() {
+		return listCoordinatesSubject;
 	} 
 	
-	public void setListCoordinatesRiver(List<Coordinate> listCoordinatesRiver) {
-		this.listCoordinatesRiver = listCoordinatesRiver;
+	public void setListCoordinatesSubject(List<Coordinate> listCoordinatesRiver) {
+		this.listCoordinatesSubject = listCoordinatesRiver;
 	}
 
 	public List getListMinorDistance() {
@@ -84,10 +84,10 @@ public class FileReader {
 		
 		System.out.println(" -- End ----");
 		
-		System.out.println("\n\n:: List of river's points ");
+		System.out.println("\n\n:: List of subject's points ");
 		System.out.println(" -- Begin --");
 		
-		for (Coordinate coordinate : listCoordinatesRiver) {
+		for (Coordinate coordinate : listCoordinatesSubject) {
 			System.out.println(coordinate);
 		}
 		
@@ -103,27 +103,10 @@ public class FileReader {
 		System.out.println(" -- End ----");
 	}	
 	
-	public void startup(){		
-//		file.read();
-//		file.printContent();
-//		this.listCoordinatesImage = file.getList();
-//		fillListCoordinatesRiver();		
-//		compare();
-//		System.out.println("lista de coordenadas: ");
-//		printFinalList(listCoordinatesImage);
-//		
-//		System.out.println("lista do rio: ");
-//		printFinalList(listCoordinatesRiver);
-//		
-//		System.out.println("menor valor: ");
-//		printFinalList(listMinorDistance);
-		
-	}
-
-	public void fillListCoordinatesRiver(){
+	public void fillListCoordinatesSubject(int VALUE){
 		for (Coordinate coordinate : listCoordinatesImage) {
-			if (coordinate.getValue() > 2){
-				listCoordinatesRiver.add(coordinate);
+			if (coordinate.getValue() > VALUE){
+				listCoordinatesSubject.add(coordinate);
 			}
 		}
 	}
@@ -136,11 +119,11 @@ public class FileReader {
 		double lat1, lat2, lon1, lon2;		
 
 		for (Coordinate coordinateImage : listCoordinatesImage) {			
-			for (Coordinate coordinateRiver : listCoordinatesRiver) {				
+			for (Coordinate coordinateSubject : listCoordinatesSubject) {				
 				lat1 = Double.parseDouble(coordinateImage.getLatitude());
-				lat2 = Double.parseDouble(coordinateRiver.getLatitude());
+				lat2 = Double.parseDouble(coordinateSubject.getLatitude());
 				lon1 = Double.parseDouble(coordinateImage.getLongitude());
-				lon2 = Double.parseDouble(coordinateRiver.getLongitude());			
+				lon2 = Double.parseDouble(coordinateSubject.getLongitude());			
 				
 				distance =  Haversine.haversine(lat1, lon1, lat2, lon2);
 				
@@ -155,11 +138,10 @@ public class FileReader {
 		System.out.println("Finished ....");
 	}
 	
-	public void grava(){
+	public void grava(String s){
 		TextFile file = new TextFile();
-		file.gravaTxt("algumNome", listCoordinatesImage);
+		file.gravaTxt(s, listCoordinatesImage);
 		
 	}
-
 	
 }

@@ -104,7 +104,7 @@ public class TextFile {
 	}
 
 	public void gravaTxt(String s, List<Coordinate> l){
-		File file = new File("C:\\temp\\Lista.txt");
+		File file = new File(s);
 		String nome = ""; // só um exemplo, crie todoas as variaveis que são atributos dos objetos do array list
 		String conteudo;
 		try	{
