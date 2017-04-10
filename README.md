@@ -10,10 +10,16 @@ O SUBJECT pode ser qualquer coisa, como um rio, por exemplo. Deste modo, é poss
 Em termos de funcionamento, algumas ações podem ser descritas:
 
 (a) O programa faz a leitura da imagem, verificando coordenada a coordenada se o valor de Z é superior ao informado;
+
 (b) Estas coordenadas são armazenadas em um vetor;
+
 (c) É feita a leitura novamente coordenada a coordenada, sendo que desta vez, a coordenada lida tem a sua distância calculada para cada SUJBECT presente no vetor;
+
 (d) A menor distância encontrada é associada a coordenada lida para construção do arquivo de saída;
+
 (e) É gerado um arquivo XYZ de saída, com as mesmas características do utilizado na entrada (lat long zValue);
+
 (f) O arquivo gerado pode ser perfeitamente aberto em um software de processamento, como o QGIS.
+
 
 Maiores informações {julianolamb, humbertobeneduzzi}@gmail.com
